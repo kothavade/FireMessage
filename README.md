@@ -16,7 +16,7 @@ A cross-platfrom messaging app, built in Flutter.
 * Cross Platform
 * Secure
 * Low-friction in finding friends to message
-### Tested Platforms:
+## Tested Platforms:
 #### Android
 * Samsung Galaxy ZFlip3
 * Pixel 4 (Emulated)
