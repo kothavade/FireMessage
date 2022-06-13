@@ -9,6 +9,14 @@ class UserData {
     return user;
   }
 
+  //get photo
+  // Future<String?> getPhoto({required String uid}) async {
+  //   FirebaseFirestore firestore = FirebaseFirestore.instance;
+  //   final DocumentSnapshot user =
+  //       await firestore.collection('users').doc(uid).get();
+  //   return user.data()!('photoUrl');
+  // }
+
   Future<void> updateUserData(
       {required String name,
       required String email,

@@ -24,7 +24,7 @@ class _LoginPageState extends State<LoginPage> {
             child: TextButton(
                 onPressed: () async {
                   final User? user =
-                      await GoogleAuth.signInWithGoogle(context: context);
+                      await GoogleAuth().signInWithGoogle(context: context);
                   if (user != null) {
                     Navigator.of(context).pushReplacement(
                       MaterialPageRoute(builder: (context) => HomePage()),

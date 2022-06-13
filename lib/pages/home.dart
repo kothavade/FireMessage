@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:fire_message_v3/pages/settings.dart';
 import 'package:fire_message_v3/utils/auth/google_auth.dart';
@@ -18,7 +16,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   FirebaseFirestore firestore = FirebaseFirestore.instance;
-  User user = GoogleAuth.currentUser();
+  User user = GoogleAuth().currentUser();
   late QueryDocumentSnapshot<Object> me;
 
   @override
@@ -31,7 +29,7 @@ class _HomePageState extends State<HomePage> {
               onSelected: (selected) async {
                 switch (selected) {
                   case 'signout':
-                    GoogleAuth.signOut(context: context);
+                    GoogleAuth().signOut(context: context);
                     Navigator.of(context).pushReplacement(
                       MaterialPageRoute(builder: (context) => InitPage()),
                     );
@@ -40,7 +38,7 @@ class _HomePageState extends State<HomePage> {
                     Navigator.of(context).push(
                       MaterialPageRoute(
                         builder: (context) => SettingsPage(
-                          user: GoogleAuth.currentUser(),
+                          user: GoogleAuth().currentUser(),
                         ),
                       ),
                     );

@@ -23,7 +23,7 @@ class GoogleAuth {
       final AuthCredential credential = GoogleAuthProvider.credential(
         accessToken: googleSignInAuthentication.accessToken,
         idToken: googleSignInAuthentication.idToken,
-      );m 
+      );
 
       try {
         final UserCredential userCredential =
@@ -51,19 +51,15 @@ class GoogleAuth {
         );
       }
     }
-    if (user != null &&
-        user.displayName != null &&
-        user.email != null &&
-        user.photoURL != null) {  {
-       await UserData().updateUserData(
-        name: user.displayName,
-        email: user.email,
-        photoUrl: user.photoURL,
-        uid: user.uid,
-      );
-      }
-      return user;
+    if (user != null) {
+      // add user to firestore
+      await firestore.collection('users').doc(user.uid).set({
+        'name': user.displayName,
+        'email': user.email,
+        'photoUrl': user.photoURL,
+      });
     }
+    return user;
   }
 
   Future<void> signOut({required BuildContext context}) async {
