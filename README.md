@@ -5,6 +5,13 @@
 # FireMessage 3
 A cross-platfrom messaging app, built in Flutter.
 
+## Build
+1. Clone this repo
+2. [Install the Flutter SDK and toolkit for your editor of choice.]([url](https://docs.flutter.dev/get-started/install))
+3. Run `flutter pub get` in project directory
+4. Run `flutter run`
+    * Ensure you have a device or emulator created and attached
+
 ## Technologies:
 * Flutter 3
 * Firebase Cloud Firestore Database
