@@ -1,17 +1,26 @@
-import 'package:fire_message_v3/utils/authentication.dart';
+import 'dart:math';
+
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:fire_message_v3/pages/settings.dart';
+import 'package:fire_message_v3/utils/auth/google_auth.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'chat.dart';
 import 'init.dart';
 
 // This page will show the user their messages.
 class HomePage extends StatefulWidget {
-  const HomePage({Key? key}) : super(key: key);
+  HomePage({Key? key}) : super(key: key);
 
   @override
   State<HomePage> createState() => _HomePageState();
 }
 
 class _HomePageState extends State<HomePage> {
+  FirebaseFirestore firestore = FirebaseFirestore.instance;
+  User user = GoogleAuth.currentUser();
+  late QueryDocumentSnapshot<Object> me;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -22,33 +31,106 @@ class _HomePageState extends State<HomePage> {
               onSelected: (selected) async {
                 switch (selected) {
                   case 'signout':
-                    Authentication.signOut(context: context);
+                    GoogleAuth.signOut(context: context);
                     Navigator.of(context).pushReplacement(
                       MaterialPageRoute(builder: (context) => InitPage()),
                     );
                     break;
                   case 'settings':
-                    // TODO: Implement settings. Link to user_info.dart
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) => SettingsPage(
+                          user: GoogleAuth.currentUser(),
+                        ),
+                      ),
+                    );
                     break;
                 }
               },
               itemBuilder: (BuildContext context) {
                 return [
-                  const PopupMenuItem(
+                  PopupMenuItem(
                     value: 'signout',
-                    child: Text('Sign Out'),
+                    child: Row(children: const [
+                      Padding(
+                        padding: EdgeInsets.only(right: 8.0),
+                        child: Icon(Icons.exit_to_app),
+                      ),
+                      Text('Sign Out'),
+                    ]),
                   ),
-                  const PopupMenuItem(
-                    value: 'settings',
-                    child: Text('Settings'),
-                  )
+                  PopupMenuItem(
+                      value: 'settings',
+                      child: Row(
+                        children: const [
+                          Padding(
+                            padding: EdgeInsets.only(right: 8.0),
+                            child: Icon(Icons.settings),
+                          ),
+                          Text('Settings'),
+                        ],
+                      ))
                 ];
               },
             )
           ],
         ),
-        body: const Center(
-          child: Text('Messages'),
+        body: Container(
+          child: getUsers(),
         ));
+  }
+
+  getUsers() {
+    return StreamBuilder(
+      stream: FirebaseFirestore.instance.collection('users').snapshots(),
+      builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
+        if (snapshot.hasError) {
+          return SnackBar(
+            content: Text('Error: ${snapshot.error}'),
+          );
+        }
+        if (!snapshot.hasData) {
+          return const Center(
+            child: CircularProgressIndicator(),
+          );
+        } else {
+          return ListView.builder(
+            itemCount: snapshot.data?.docs.length,
+            itemBuilder: (BuildContext context, int index) {
+              final QueryDocumentSnapshot<Object>? document =
+                  snapshot.data?.docs[index] as QueryDocumentSnapshot<Object>?;
+              if (document != null && snapshot.data?.docs.length != 1) {
+                if (document.id != user.uid) {
+                  return ListTile(
+                    leading: CircleAvatar(
+                      backgroundImage: NetworkImage(document['photoUrl']),
+                    ),
+                    title: Text(document['name']),
+                    subtitle: Text(document['email']),
+                    onTap: () {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (context) => ChatPage(
+                            user: me,
+                            chatUser: document,
+                          ),
+                        ),
+                      );
+                    },
+                  );
+                } else {
+                  me = document;
+                  return Container();
+                }
+              } else {
+                return const Center(
+                  child: Text('No users found'),
+                );
+              }
+            },
+          );
+        }
+      },
+    );
   }
 }

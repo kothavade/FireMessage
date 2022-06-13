@@ -16,10 +16,11 @@ A cross-platfrom messaging app, built in Flutter.
 * Cross Platform
 * Secure
 * Low-friction in finding friends to message
-## Tested Platforms:
+## Tested Working Platforms:
 #### Android
 * Samsung Galaxy ZFlip3
 * Pixel 4 (Emulated)
+* Pixel 3a (Emualted)
 #### Windows
 * Windows 10 21H2
 #### macOS
@@ -29,3 +30,8 @@ A cross-platfrom messaging app, built in Flutter.
 ### Web
 * Firefox 101.0.1
 * Brave 1.39.122
+
+## Tested Failing Platforms:
+#### Linux
+* Firebase Core for Flutter does not support Linux
+* Arch Linux

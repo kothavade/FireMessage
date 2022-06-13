@@ -1,11 +1,14 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:fire_message_v3/utils/database/user_data.dart';
 
-class Authentication {
+class GoogleAuth {
   // sign in with google:
-  static Future<User?> signInWithGoogle({required BuildContext context}) async {
+  Future<User?> signInWithGoogle({required BuildContext context}) async {
     FirebaseAuth firebaseAuth = FirebaseAuth.instance;
+    FirebaseFirestore firestore = FirebaseFirestore.instance;
     User? user;
 
     final GoogleSignIn googleSignIn = GoogleSignIn();
@@ -20,7 +23,7 @@ class Authentication {
       final AuthCredential credential = GoogleAuthProvider.credential(
         accessToken: googleSignInAuthentication.accessToken,
         idToken: googleSignInAuthentication.idToken,
-      );
+      );m 
 
       try {
         final UserCredential userCredential =
@@ -48,14 +51,28 @@ class Authentication {
         );
       }
     }
-    return user;
+    if (user != null &&
+        user.displayName != null &&
+        user.email != null &&
+        user.photoURL != null) {  {
+       await UserData().updateUserData(
+        name: user.displayName,
+        email: user.email,
+        photoUrl: user.photoURL,
+        uid: user.uid,
+      );
+      }
+      return user;
+    }
   }
 
-  static Future<void> signOut({required BuildContext context}) async {
+  Future<void> signOut({required BuildContext context}) async {
     final GoogleSignIn googleSignIn = GoogleSignIn();
 
     try {
       await FirebaseAuth.instance.signOut();
+      await googleSignIn.disconnect();
+      await googleSignIn.signOut();
     } catch (e) {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
@@ -63,5 +80,9 @@ class Authentication {
         ),
       );
     }
+  }
+
+  currentUser() {
+    return FirebaseAuth.instance.currentUser;
   }
 }
