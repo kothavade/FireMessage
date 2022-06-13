@@ -19,19 +19,21 @@ A cross-platfrom messaging app, built in Flutter.
 ## Tested Working Platforms:
 #### Android
 * Samsung Galaxy ZFlip3
+* One Plus 7 Pro
 * Pixel 4 (Emulated)
 * Pixel 3a (Emualted)
-#### Windows
-* Windows 10 21H2
-#### macOS
-* M1 Macbook Pro 13 inch, macOS Monterey
-#### Linux
-* Arch Linux
-### Web
-* Firefox 101.0.1
-* Brave 1.39.122
 
 ## Tested Failing Platforms:
 #### Linux
 * Firebase Core for Flutter does not support Linux
 * Arch Linux
+#### macOS
+* CocoaPods do not compile for ARM
+* M1 Macbook Pro 13 inch, macOS Monterey
+
+## To Be Tested Platfroms
+#### Windows
+* Windows 10 21H2
+#### Web
+* Firefox 101.0.1
+* Brave 1.39.122
