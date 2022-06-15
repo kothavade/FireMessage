@@ -29,6 +29,10 @@ A cross-platfrom messaging app, built in Flutter.
 * One Plus 7 Pro
 * Pixel 4 (Emulated)
 * Pixel 3a (Emualted)
+#### Web
+* Firefox 101.0.1
+* Brave 1.39.122
+* Chrome 102.0.5005.115
 
 ## Tested Failing Platforms:
 #### Linux
@@ -41,6 +45,4 @@ A cross-platfrom messaging app, built in Flutter.
 ## To Be Tested Platfroms
 #### Windows
 * Windows 10 21H2
-#### Web
-* Firefox 101.0.1
-* Brave 1.39.122
+
