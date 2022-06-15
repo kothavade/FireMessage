@@ -102,50 +102,48 @@ class _ChatPageState extends State<ChatPage> {
                       },
                     );
                   } else {
-                    return Center(
+                    return const Center(
                       child: Text('No messages found.'),
                     );
                   }
                 },
               ),
             ),
-            Container(
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Expanded(
-                  child: TextField(
-                    controller: textController,
-                    decoration: InputDecoration(
-                        hintText: 'Enter a message',
-                        suffixIcon: IconButton(
-                            icon: Icon(Icons.send),
-                            onPressed: () {
-                              firestore
-                                  .collection('chats')
-                                  .doc(widget._user.id)
-                                  .collection('chats')
-                                  .doc(widget._chatUser.id)
-                                  .collection('messages')
-                                  .add({
-                                'text': textController.text,
-                                'createdAt': Timestamp.now(),
-                                'userId': widget._user.id,
-                              });
-                              firestore
-                                  .collection('chats')
-                                  .doc(widget._chatUser.id)
-                                  .collection('chats')
-                                  .doc(widget._user.id)
-                                  .collection('messages')
-                                  .add({
-                                'text': textController.text,
-                                'createdAt': Timestamp.now(),
-                                'userId': widget._user.id,
-                              });
-                              textController.clear();
-                            })),
-                  ),
-                ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: TextField(
+                controller: textController,
+                decoration: InputDecoration(
+                    hintText: 'Enter a message',
+                    suffixIcon: IconButton(
+                        icon: Icon(Icons.send),
+                        onPressed: () {
+                          if (textController.text.isNotEmpty) {
+                            firestore
+                                .collection('chats')
+                                .doc(widget._user.id)
+                                .collection('chats')
+                                .doc(widget._chatUser.id)
+                                .collection('messages')
+                                .add({
+                              'text': textController.text,
+                              'createdAt': Timestamp.now(),
+                              'userId': widget._user.id,
+                            });
+                            firestore
+                                .collection('chats')
+                                .doc(widget._chatUser.id)
+                                .collection('chats')
+                                .doc(widget._user.id)
+                                .collection('messages')
+                                .add({
+                              'text': textController.text,
+                              'createdAt': Timestamp.now(),
+                              'userId': widget._user.id,
+                            });
+                          }
+                          textController.clear();
+                        })),
               ),
             ),
           ],

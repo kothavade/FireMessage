@@ -17,10 +17,7 @@ import 'package:flutter/foundation.dart'
 class DefaultFirebaseOptions {
   static FirebaseOptions get currentPlatform {
     if (kIsWeb) {
-      throw UnsupportedError(
-        'DefaultFirebaseOptions have not been configured for web - '
-        'you can reconfigure this by running the FlutterFire CLI again.',
-      );
+      return web;
     }
     switch (defaultTargetPlatform) {
       case TargetPlatform.android:
@@ -28,10 +25,7 @@ class DefaultFirebaseOptions {
       case TargetPlatform.iOS:
         return ios;
       case TargetPlatform.macOS:
-        throw UnsupportedError(
-          'DefaultFirebaseOptions have not been configured for macos - '
-          'you can reconfigure this by running the FlutterFire CLI again.',
-        );
+        return macos;
       case TargetPlatform.windows:
         throw UnsupportedError(
           'DefaultFirebaseOptions have not been configured for windows - '
@@ -49,6 +43,15 @@ class DefaultFirebaseOptions {
     }
   }
 
+  static const FirebaseOptions web = FirebaseOptions(
+    apiKey: 'AIzaSyD3zieGj8GqoEKcn7XjeXUJui9Jb8HMDZU',
+    appId: '1:839664373691:web:842d062dd721d038507e9e',
+    messagingSenderId: '839664373691',
+    projectId: 'firemessagev3',
+    authDomain: 'firemessagev3.firebaseapp.com',
+    storageBucket: 'firemessagev3.appspot.com',
+  );
+
   static const FirebaseOptions android = FirebaseOptions(
     apiKey: 'AIzaSyDz4TMc48N-PFJgyRr79qyVbSYs1ijCNC8',
     appId: '1:839664373691:android:61fa73a1014890fe507e9e',
@@ -63,6 +66,18 @@ class DefaultFirebaseOptions {
     messagingSenderId: '839664373691',
     projectId: 'firemessagev3',
     storageBucket: 'firemessagev3.appspot.com',
+    androidClientId: '839664373691-49fqdtoplub1ervqs7a9kunoupb1rttm.apps.googleusercontent.com',
+    iosClientId: '839664373691-st770c9952lp28n2p14esd71o66eifee.apps.googleusercontent.com',
+    iosBundleId: 'com.example.fireMessageV3',
+  );
+
+  static const FirebaseOptions macos = FirebaseOptions(
+    apiKey: 'AIzaSyC9wtsHYF9nMfpvvxVWaxtkgCUzp5WIipg',
+    appId: '1:839664373691:ios:e57f3eca9c3363d1507e9e',
+    messagingSenderId: '839664373691',
+    projectId: 'firemessagev3',
+    storageBucket: 'firemessagev3.appspot.com',
+    androidClientId: '839664373691-49fqdtoplub1ervqs7a9kunoupb1rttm.apps.googleusercontent.com',
     iosClientId: '839664373691-st770c9952lp28n2p14esd71o66eifee.apps.googleusercontent.com',
     iosBundleId: 'com.example.fireMessageV3',
   );
