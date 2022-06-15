@@ -27,8 +27,8 @@ A cross-platfrom messaging app, built in Flutter.
 #### Android
 * Samsung Galaxy ZFlip3
 * One Plus 7 Pro
-* Pixel 4 (Emulated)
-* Pixel 3a (Emualted)
+* Pixel 4 (Emulated), Android 12
+* Pixel 3a (Emualted), Android 11
 #### Web
 * Firefox 101.0.1
 * Brave 1.39.122
