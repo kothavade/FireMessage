@@ -17,7 +17,6 @@ A cross-platfrom messaging app, built in Flutter.
 * Firebase Cloud Firestore Database
 * Firebase Authentication
     * Sign in with Google
-    * Sign in with Email/Password
 * Firebase Storage
 ## Features:
 * Cross Platform
