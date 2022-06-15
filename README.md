@@ -10,7 +10,7 @@ A cross-platfrom messaging app, built in Flutter.
 2. [Install the Flutter SDK and toolkit for your editor of choice.]([url](https://docs.flutter.dev/get-started/install))
 3. Run `flutter pub get` in project directory
 4. Run `flutter run`
-    * Ensure you have a device or emulator created and attached
+    * Ensure that you have a device or emulator created and attached
 
 ## Technologies:
 * Flutter 3
