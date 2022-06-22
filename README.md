@@ -2,7 +2,7 @@
     <img width="160" height="160" src="./images/firebase.png">
 </p>
 
-# FireMessage 3
+# FireMessage
 A cross-platfrom messaging app, built in Flutter.
 
 ## Build
