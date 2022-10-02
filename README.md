@@ -22,23 +22,32 @@ A cross-platfrom messaging app, built in Flutter.
 * Cross Platform
 * Secure
 * Low-friction in finding friends to message
-## Tested Working Platforms:
-#### Android
-* Samsung Galaxy ZFlip3
-* One Plus 7 Pro
-* Pixel 4 (Emulated), Android 12
-* Pixel 3a (Emualted), Android 11
-#### Web
-* Firefox 101.0.1
-* Brave 1.39.122
-* Chrome 102.0.5005.115
-#### Windows
-* Windows 10 21H2
-* Windows 11 22H2
-## Tested Failing Platforms:
-#### Linux
-* Firebase Core for Flutter does not support Linux
-#### macOS
-* CocoaPods does not compile for ARM
-* M1 Macbook Pro 13 inch, macOS Monterey
-
+## Platforms:
+<details>
+    <summary><h4>Android</h4></summary>
+    <ul>
+        <li>Samsung Galaxy ZFlip3</li>
+        <li>One Plus 7 Pro</li>
+        <li>Pixel 4 (Emulated), Android 12</li>
+        <li>Pixel 3a (Emualted), Android 11</li>
+</details>
+<details>
+    <summary><h4>Web</h4></summary>
+    <ul>
+        <li>Firefox 101.0.1</li>
+        <li>Brave 1.39.122</li>
+        <li>Chrome 102.0.5005.115</li>
+</details>
+<details>
+    <summary><h4>Windows</h4></summary>
+    <ul>
+        <li>Windows 10 21H2</li>
+        <li>Windows 11 22H2</li>
+</details>
+<details>
+    <summary><h4>macOS</h4></summary>
+    <ul>
+        <li>Monterey</li>
+        <li>Ventura</li>
+</details>
+Note: Linux unfortunatley does not work, as Firebase Core for Flutter does not support it.
