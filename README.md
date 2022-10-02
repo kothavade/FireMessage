@@ -52,4 +52,5 @@ A cross-platfrom messaging app, built in Flutter.
         <li>Monterey</li>
         <li>Ventura</li>
 </details>
+
 Note: Linux unfortunatley does not work, as Firebase Core for Flutter does not support it.
