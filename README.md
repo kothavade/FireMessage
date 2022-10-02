@@ -32,16 +32,13 @@ A cross-platfrom messaging app, built in Flutter.
 * Firefox 101.0.1
 * Brave 1.39.122
 * Chrome 102.0.5005.115
-
+#### Windows
+* Windows 10 21H2
+* Windows 11 22H2
 ## Tested Failing Platforms:
 #### Linux
 * Firebase Core for Flutter does not support Linux
-* Arch Linux
 #### macOS
-* CocoaPods do not compile for ARM
+* CocoaPods does not compile for ARM
 * M1 Macbook Pro 13 inch, macOS Monterey
-
-## To Be Tested Platfroms
-#### Windows
-* Windows 10 21H2
 
