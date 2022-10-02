@@ -22,9 +22,11 @@ A cross-platfrom messaging app, built in Flutter.
 * Cross Platform
 * Secure
 * Low-friction in finding friends to message
+* Native UI on Android and iOS
+* MaterialUI on Windows, macOS, and the Web
 ## Platforms:
 <details>
-    <summary><h4>Android</h4></summary>
+    <summary>Android</summary>
     <ul>
         <li>Samsung Galaxy ZFlip3</li>
         <li>One Plus 7 Pro</li>
@@ -32,20 +34,20 @@ A cross-platfrom messaging app, built in Flutter.
         <li>Pixel 3a (Emualted), Android 11</li>
 </details>
 <details>
-    <summary><h4>Web</h4></summary>
+    <summary>Web</summary>
     <ul>
         <li>Firefox 101.0.1</li>
         <li>Brave 1.39.122</li>
         <li>Chrome 102.0.5005.115</li>
 </details>
 <details>
-    <summary><h4>Windows</h4></summary>
+    <summary>Windows</summary>
     <ul>
         <li>Windows 10 21H2</li>
         <li>Windows 11 22H2</li>
 </details>
 <details>
-    <summary><h4>macOS</h4></summary>
+    <summary>macOS</summary>
     <ul>
         <li>Monterey</li>
         <li>Ventura</li>
