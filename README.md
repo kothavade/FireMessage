@@ -53,4 +53,4 @@ A cross-platfrom messaging app, built in Flutter.
         <li>Ventura</li>
 </details>
 
-Note: Linux unfortunatley does not work, as Firebase Core for Flutter does not support it.
+Note: Linux unfortunately does not work, as Firebase Core for Flutter does not support it.
